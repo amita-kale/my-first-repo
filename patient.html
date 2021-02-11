@@ -41,16 +41,80 @@
       tr.append(th);
       table.append(tr);
 
+      th = document.createElement('th');
+      name = document.createTextNode('action');
+      th.append(name);
+      tr.append(th);
+      table.append(tr);
+
       document.body.append(table);
 
-    });
-    arr = [
-      {
-        id:
-        
-      }
 
-    ]
+      arr = [
+        {
+          id: 1,
+          name: "abc",
+          gender: "female",
+          class: "fy",
+          disease: "accident",
+        },
+        {
+          id: 2,
+          name: "xyz",
+          gender: "male",
+          class: "sy",
+          disease: "attack",
+
+        }
+      ];
+      arr.forEach(ele => {
+
+        let tr = document.createElement('tr');
+        let td = document.createElement('td');
+        let name = document.createTextNode(ele.id);
+        td.append(name);
+        tr.append(td);
+
+        td = document.createElement('td');
+        name = document.createTextNode(ele.name);
+        td.append(name);
+        tr.append(td);
+
+        td = document.createElement('td');
+        name = document.createTextNode(ele.gender);
+        td.append(name);
+        tr.append(td);
+
+        td = document.createElement('td');
+        name = document.createTextNode(ele.class);
+        td.append(name);
+        tr.append(td);
+
+        td = document.createElement('td');
+        name = document.createTextNode(ele.disease);
+        td.append(name);
+        tr.append(td);
+
+        td = document.createElement('td');
+        let button = document.createElement('button');
+        name = document.createTextNode('Delete');
+        button.append(name);
+        td.append(button);
+        tr.append(td);
+
+        td = document.createElement('td');
+        button = document.createElement('button');
+        name = document.createTextNode('Edit');
+        button.append(name);
+        td.append(button);
+        tr.append(td);
+
+        table.append(tr);
+        document.body.append(table)
+
+      });
+
+    });
   </script>
 </head>
 
