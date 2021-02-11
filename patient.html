@@ -114,6 +114,70 @@
 
       });
 
+      let form = document.createElement('form');
+      let label = document.createElement('label');
+      label.setAttribute("for", 'id');
+      name = document.createTextNode('id');
+      label.append(name);
+      form.append(label);
+
+      let input = document.createElement('input');
+      input.type = "number";
+      input.id = "id";
+      label.append(input);
+      let br = document.createElement('br');
+
+      label = document.createElement('label');
+      label.setAttribute("for", 'name');
+      name = document.createTextNode('Name :');
+      label.append(name);
+      form.append(label);
+
+      input = document.createElement('input');
+      input.type = "text";
+      input.id = "name";
+      label.append(input);
+
+      label = document.createElement('label');
+      name = document.createTextNode('Gender ::');
+      label.append(name);
+      form.append(label);
+
+      select = document.createElement('select');
+      option = document.createElement('option');
+      name = document.createTextNode('male');
+      option.append(name);
+      select.append(option);
+
+      option = document.createElement('option');
+      name = document.createTextNode('female');
+      option.append(name);
+      select.append(option);
+      label.append(select);
+
+
+      label = document.createElement('label');
+      label.setAttribute("for", 'class');
+      name = document.createTextNode('Class :');
+      label.append(name);
+      form.append(label);
+
+      input = document.createElement('input');
+      input.type = "text";
+      input.id = "class";
+      label.append(input);
+
+      label = document.createElement('label');
+      label.setAttribute("for", 'disease');
+      name = document.createTextNode('Disease :');
+      label.append(name);
+      form.append(label);
+
+      input = document.createElement('input');
+      input.type = "text";
+      input.id = "disease";
+      label.append(input);
+      document.body.append(form);
     });
   </script>
 </head>
