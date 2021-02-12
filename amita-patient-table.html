@@ -1,0 +1,241 @@
+<html>
+
+<head>
+  <script>
+    var pationt = [
+      {
+        id: 1,
+        name: "amita",
+        gender: "female",
+        class: 'FE',
+        disease: "Fewer"
+
+      },
+      {
+        id: 2,
+        name: "ashvini",
+        gender: "female",
+        class: 'SE',
+        disease: "Hedache"
+
+      },
+      {
+        id: 3,
+        name: "aniket",
+        gender: "male",
+        class: 'TE',
+        disease: "Fewer"
+
+      },
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      let body = document.createElement('body');
+      let table = document.createElement('table');
+      table.border = "2";
+      table.align = "center";
+      let tr = document.createElement('tr');
+      let th = document.createElement('th');
+      let name = document.createTextNode('ID');
+      th.append(name);
+      tr.append(th);
+
+      th = document.createElement('th');
+      name = document.createTextNode('Name');
+      th.append(name);
+      tr.append(th);
+
+      th = document.createElement('th');
+      name = document.createTextNode('Gender');
+      th.append(name);
+      tr.append(th);
+
+      th = document.createElement('th');
+      name = document.createTextNode('Class');
+      th.append(name);
+      tr.append(th);
+
+      th = document.createElement('th');
+      name = document.createTextNode('Disease');
+      th.append(name);
+      tr.append(th);
+
+      th = document.createElement('th');
+      name = document.createTextNode('Action');
+      th.append(name);
+      tr.append(th);
+
+      th = document.createElement('th');
+      name = document.createTextNode('Action');
+      th.append(name);
+      tr.append(th);
+
+      table.append(tr);
+      document.body.append(table);
+
+
+      pationt.forEach(ele => {
+        tr = document.createElement('tr');
+        let td = document.createElement('td');
+        name = document.createTextNode(ele.id);
+        td.append(name);
+        tr.append(td);
+        td = document.createElement('td');
+        name = document.createTextNode(ele.name);
+        td.append(name);
+        tr.append(td);
+        td = document.createElement('td');
+        name = document.createTextNode(ele.gender);
+        td.append(name);
+        tr.append(td);
+        td = document.createElement('td');
+        name = document.createTextNode(ele.class);
+        td.append(name);
+        tr.append(td);
+        td = document.createElement('td');
+        name = document.createTextNode(ele.disease);
+        td.append(name);
+        tr.append(td);
+
+        td = document.createElement('td');
+        let button = document.createElement('button');
+        name = document.createTextNode("Edit");
+        button.append(name);
+        td.append(button);
+        tr.append(td);
+
+        td = document.createElement('td');
+        button = document.createElement('button');
+        name = document.createTextNode("Delete");
+        button.append(name);
+        td.append(button);
+        tr.append(td);
+        table.append(tr);
+        document.body.append(table);
+      });//close forEach....................
+
+      //form...........................
+      let form = document.createElement('form');
+
+      table = document.createElement('table');
+      table.border = "1";
+      table.align = "center";
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'id');
+      name = document.createTextNode('id:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.type = "number";
+      input.id = "id";
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+      form.append(table);
+      br = document.createElement('br');
+      form.append(br);
+
+
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'name');
+      name = document.createTextNode('name:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.type = "text";
+      input.id = "name";
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+      form.append(table);
+      br = document.createElement('br');
+      form.append(br);
+      document.body.append(form);
+
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'gender');
+      name = document.createTextNode('gender:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      //code for dropdown list..........................
+      td = document.createElement('td');
+
+      let select = document.createElement('select');
+      let option = document.createElement('option');
+      name = document.createTextNode('male');
+      option.append(name);
+      select.append(option);
+
+      option = document.createElement('option');
+      name = document.createTextNode('female');
+      option.append(name);
+      select.append(option);
+      td.append(select);
+      tr.append(td);
+      table.append(tr);
+      form.append(table);
+
+      br = document.createElement('br');
+      form.append(br);
+      // ...........................................................
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'class');
+      name = document.createTextNode('class:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.type = "text";
+      input.id = "class";
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+      form.append(table);
+      br = document.createElement('br');
+      form.append(br);
+
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'desease');
+      name = document.createTextNode('desease:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.type = "text";
+      input.id = "desease";
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+      form.append(table);
+      br = document.createElement('br');
+      form.append(br);
+      document.body.append(form);
+
+    });
+  </script>
+</head>
+
+</html>
