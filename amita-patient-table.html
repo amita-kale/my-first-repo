@@ -8,7 +8,7 @@
         name: "amita",
         gender: "female",
         class: 'FE',
-        disease: "Fewer"
+        desease: "Fewer"
 
       },
       {
@@ -16,7 +16,7 @@
         name: "ashvini",
         gender: "female",
         class: 'SE',
-        disease: "Hedache"
+        desease: "Hedache"
 
       },
       {
@@ -24,16 +24,21 @@
         name: "aniket",
         gender: "male",
         class: 'TE',
-        disease: "Fewer"
+        desease: "Fewer"
 
       },
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
       let body = document.createElement('body');
+      let div = document.createElement('div');
+      div.id = "div-id";
+      isEdit = true;
+      isIndex = -1;
       let table = document.createElement('table');
       table.border = "2";
       table.align = "center";
+      table.id = "tblid";
       let tr = document.createElement('tr');
       let th = document.createElement('th');
       let name = document.createTextNode('ID');
@@ -73,52 +78,76 @@
       table.append(tr);
       document.body.append(table);
 
+      newTable();
+      function newTable() {
+        pationt.forEach((ele, indexx) => {
+          tr = document.createElement('tr');
+          let td = document.createElement('td');
+          name = document.createTextNode(ele.id);
+          td.append(name);
+          tr.append(td);
+          td = document.createElement('td');
+          name = document.createTextNode(ele.name);
+          td.append(name);
+          tr.append(td);
+          td = document.createElement('td');
+          name = document.createTextNode(ele.gender);
+          td.append(name);
+          tr.append(td);
+          td = document.createElement('td');
+          name = document.createTextNode(ele.class);
+          td.append(name);
+          tr.append(td);
+          td = document.createElement('td');
+          name = document.createTextNode(ele.desease);
+          td.append(name);
+          tr.append(td);
 
-      pationt.forEach(ele => {
-        tr = document.createElement('tr');
-        let td = document.createElement('td');
-        name = document.createTextNode(ele.id);
-        td.append(name);
-        tr.append(td);
-        td = document.createElement('td');
-        name = document.createTextNode(ele.name);
-        td.append(name);
-        tr.append(td);
-        td = document.createElement('td');
-        name = document.createTextNode(ele.gender);
-        td.append(name);
-        tr.append(td);
-        td = document.createElement('td');
-        name = document.createTextNode(ele.class);
-        td.append(name);
-        tr.append(td);
-        td = document.createElement('td');
-        name = document.createTextNode(ele.disease);
-        td.append(name);
-        tr.append(td);
+          td = document.createElement('td');
+          let button = document.createElement('button');
+          name = document.createTextNode("Edit");
+          button.append(name);
+          button.addEventListener('click', () => {
+            console.log(pationt[indexx]);
+            document.getElementById("id").value = pationt[indexx].id;
+            document.getElementById('name').value = pationt[indexx].name;
+            document.getElementById('gender').value = pationt[indexx].gender;
+            document.getElementById('class').value = pationt[indexx].class;
+            document.getElementById('desease').value = pationt[indexx].desease;
+            isEdit = false;
+            const editButton = document.getElementById('submit-id');
+            editButton.innerText = "Update";
+            isIndex = indexx;
+            console.log(isIndex);
+          });
+          td.append(button);
+          tr.append(td);
 
-        td = document.createElement('td');
-        let button = document.createElement('button');
-        name = document.createTextNode("Edit");
-        button.append(name);
-        td.append(button);
-        tr.append(td);
+          td = document.createElement('td');
+          button = document.createElement('button');
+          name = document.createTextNode("Delete");
+          button.append(name);
+          button.addEventListener('click', () => {
+            document.getElementById("div-id").innerHTML = '';
+            console.log(pationt[indexx]);
+            pationt.splice(indexx, 1);
+            newTable();
 
-        td = document.createElement('td');
-        button = document.createElement('button');
-        name = document.createTextNode("Delete");
-        button.append(name);
-        td.append(button);
-        tr.append(td);
-        table.append(tr);
-        document.body.append(table);
-      });//close forEach....................
+          });
+          td.append(button);
+          tr.append(td);
+          table.append(tr);
+          div.append(table)
+          document.body.append(div);
+        });
+      }
+      //close forEach....................
 
       //form...........................
       let form = document.createElement('form');
 
       table = document.createElement('table');
-      table.border = "1";
+
       table.align = "center";
 
       tr = document.createElement('tr');
@@ -166,8 +195,10 @@
       tr = document.createElement('tr');
       td = document.createElement('td');
       label = document.createElement('label');
+
       label.setAttribute("for", 'gender');
       name = document.createTextNode('gender:');
+      name
       label.append(name);
       td.append(label);
       tr.append(td);
@@ -177,11 +208,14 @@
 
       let select = document.createElement('select');
       let option = document.createElement('option');
+      option.id = 'gender';
       name = document.createTextNode('male');
       option.append(name);
       select.append(option);
 
       option = document.createElement('option');
+      option.id = 'gender';
+
       name = document.createTextNode('female');
       option.append(name);
       select.append(option);
@@ -189,6 +223,7 @@
       tr.append(td);
       table.append(tr);
       form.append(table);
+
 
       br = document.createElement('br');
       form.append(br);
@@ -232,7 +267,65 @@
       form.append(table);
       br = document.createElement('br');
       form.append(br);
+      br = document.createElement('br');
+      form.append(br);
+      br = document.createElement('br');
+      form.append(br);
+
+      tr = document.createElement('tr')
+      td = document.createElement('td');
+      button = document.createElement('button');
+      button.type = "submit";
+      button.value = "submit";
+      button.id = "submit-id";
+      name = document.createTextNode('Submit');
+      button.addEventListener('click', (event) => {
+        document.getElementById("div-id").innerHTML = '';
+
+        const studObj = {
+          id: document.getElementById("id").value,
+          name: document.getElementById('name').value,
+          gender: document.getElementById('gender').value,
+          class: document.getElementById('class').value,
+          desease: document.getElementById('desease').value,
+        };
+        console.log(studObj);
+        if (isEdit == false) {
+          pationt[indexx] = studObj;
+          isEdit = true;
+          isIndex = -1;
+          const editButton = document.getElementById('submit-id');
+          editButton.innerText = "Submit";
+        }
+        else {
+          pationt.push(studObj);
+        }
+        newTable();
+
+      });
+      button.append(name);
+      td.append(button);
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      button = document.createElement('button');
+      button.type = "reset";
+      button.value = "reset";
+      button.id = "reset-id";
+      name = document.createTextNode('Reset');
+      button.append(name);
+      button.addEventListener('click', () => {
+        const editButton = document.getElementById('submit-id');
+        editButton.innerText = "Submit";
+        isEdit = true;
+        isIndex = -1;
+      })
+      td.append(button);
+      tr.appendChild(td);
+      table.append(tr);
+      form.append(table);
       document.body.append(form);
+
 
     });
   </script>
