@@ -2,13 +2,16 @@
 
 <head>
   <script>
-    let body = document.createElement('body');
-    let form = document.createElement('form');
-    let table = document.createElement('table');
-    let tr = document.createElement('tr');
-    let td = document.createElement('td');
+    document.addEventListener('DOMContentLoaded', () => {
+
+      let body = document.createElement('body');
+      let h2 = document.createElement('h2');
+      let name = document.createTextNode('Add Users');
+      h2.append(name);
+      document.body.append(h2);
 
 
+    });
   </script>
 </head>
 
