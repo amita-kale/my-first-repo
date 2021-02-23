@@ -79,14 +79,14 @@
       td = document.createElement('td');
 
       let select = document.createElement('select');
+      select.id = 'gender';
       let option = document.createElement('option');
-      option.id = 'gender';
+
       name = document.createTextNode('male');
       option.append(name);
       select.append(option);
 
       option = document.createElement('option');
-      option.id = 'gender';
 
       name = document.createTextNode('female');
       option.append(name);
@@ -130,12 +130,12 @@
           gender: document.getElementById('gender').value,
           Address: document.getElementById('Address').value,
         };
-        if (isEdit === false) {
-          Student[indexx] = studObj;
+        if (isEdit === true) {
+          Student[isIndex] = studObj;
           isIndex = -1;
-          isEdit = true;
-          var isEdit = document.getElementById('submit-id');
-          isEdit.innerText = 'Submit';
+          isEdit = false;
+          var nameChange = document.getElementById('submit-id');
+          nameChange.innerText = 'Submit';
         }
         else {
           Student.push(studObj);
@@ -283,8 +283,8 @@
             document.getElementById('gender').value = Student[indexx].gender;
             document.getElementById('Address').value = Student[indexx].Address;
             isIndex = indexx;
-            var isEdit = document.getElementById('submit-id');
-            isEdit.innerText = 'Update';
+            var nameChange = document.getElementById('submit-id');
+            nameChange.innerText = 'Update';
             isEdit = true;
           });
           button.append(name);
