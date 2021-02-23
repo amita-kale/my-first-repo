@@ -81,6 +81,7 @@
       document.body.append(div);
 
       newTable();
+
       function newTable() {
         pationt.forEach((ele, indexx) => {
           tr = document.createElement('tr');
@@ -130,7 +131,7 @@
           name = document.createTextNode("Delete");
           button.append(name);
           button.addEventListener('click', () => {
-            //document.getElementById("div-id").innerHTML = '';
+            document.getElementById("div-id").innerHTML = '';
             console.log(pationt[indexx]);
             pationt.splice(indexx, 1);
             newTable();
@@ -235,7 +236,7 @@
       td = document.createElement('td');
       label = document.createElement('label');
       label.setAttribute("for", 'class');
-      name = document.createTextNode('class:');
+      name = document.createTextNode('class');
       label.append(name);
       td.append(label);
       tr.append(td);
@@ -285,17 +286,18 @@
         document.getElementById("div-id").innerHTML = '';
 
         const studObj = {
-          id: document.getElementById("id").value,
+          id: document.getElementById('id').value,
           name: document.getElementById('name').value,
           gender: document.getElementById('gender').value,
           class: document.getElementById('class').value,
           desease: document.getElementById('desease').value,
         };
         console.log(studObj);
-        if (isEdit == false) {
-          pationt[indexx] = studObj;
-          isEdit = true;
+        if (isEdit === false) {
+          console.log(isIndex);
+          pationt[isIndex] = studObj;
           isIndex = -1;
+          isEdit = true;
           const editButton = document.getElementById('submit-id');
           editButton.innerText = "Submit";
         }
@@ -303,6 +305,11 @@
           pationt.push(studObj);
         }
         newTable();
+        document.getElementById("id").value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('gender').value = '';
+        document.getElementById('class').value = '';
+        document.getElementById('desease').value = '';
 
       });
       button.append(name);
@@ -321,7 +328,8 @@
         editButton.innerText = "Submit";
         isEdit = true;
         isIndex = -1;
-      })
+      });
+
       td.append(button);
       tr.appendChild(td);
       table.append(tr);
