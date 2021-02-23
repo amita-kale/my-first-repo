@@ -3,15 +3,143 @@
 <head>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
-      let body = document.createElement('body');
       let h2 = document.createElement('h2');
       let name = document.createTextNode('Add Users');
+      h2.append(name);
+      document.body.append(h2);
+      let form = document.createElement('form');
+      let table = document.createElement('table');
+      table.align = 'center';
+      let tr = document.createElement('tr');
+      let td = document.createElement('td');
+      let label = document.createElement('label');
+      label.setAttribute("for", 'id');
+      name = document.createTextNode('ID:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      let input = document.createElement('input');
+      input.id = 'id';
+      input.type = 'number';
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'name');
+      name = document.createTextNode('Name:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.id = 'name';
+      input.type = 'text';
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'MobNo');
+      name = document.createTextNode('MobNo:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.id = 'MobNo';
+      input.type = 'number';
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+
+      label.setAttribute("for", 'gender');
+      name = document.createTextNode('gender:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      //code for dropdown list..........................
+      td = document.createElement('td');
+
+      let select = document.createElement('select');
+      let option = document.createElement('option');
+      option.id = 'gender';
+      name = document.createTextNode('male');
+      option.append(name);
+      select.append(option);
+
+      option = document.createElement('option');
+      option.id = 'gender';
+
+      name = document.createTextNode('female');
+      option.append(name);
+      select.append(option);
+      td.append(select);
+      tr.append(td);
+      table.append(tr);
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute("for", 'Address');
+      name = document.createTextNode('Address:');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      let textArea = document.createElement('textArea');
+      textArea.id = 'Address';
+      textArea.type = 'text/number';
+      td.append(textArea);
+      tr.append(td);
+      table.append(tr);
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      let button = document.createElement('button');
+      name = document.createTextNode('Submit');
+      button.id = "submit-id";
+      button.append(name);
+      td.append(button);
+      tr.append(td);
+
+      td = document.createElement('td');
+      button = document.createElement('button');
+      name = document.createTextNode('Reset');
+      button.id = "Reset-id";
+      button.append(name);
+      td.append(button);
+
+      tr.append(td);
+      table.append(tr);
+
+      form.append(table);
+      document.body.append(form);
+
+      //create table...........................................
+
+      h2 = document.createElement('h2');
+      name = document.createTextNode('Users');
       h2.append(name);
       document.body.append(h2);
 
 
     });
+
   </script>
 </head>
 
