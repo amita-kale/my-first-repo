@@ -1,0 +1,272 @@
+<html>
+
+<head>
+  <title>New CRUD Application</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      var students = [
+        {
+          id: 1,
+          name: "Amita",
+          class: "FE",
+          village: "Khodad",
+        },
+        {
+          id: 2,
+          name: "Ashvini",
+          class: "SE",
+          village: "joremala",
+        },
+        {
+          id: 3,
+          name: "Aniket",
+          class: "TE",
+          village: "Gadachiwadi",
+        },
+      ];
+      let body = document.createElement('body');
+      isEdit = false;
+      indexOfTable = -1;
+      newStudentsTable();
+      function newStudentsTable() {
+        let table = document.createElement('table');
+        table.border = "1";
+        table.align = "center";
+        table.id = 'table-id';
+        let tr = document.createElement('tr');
+        let th = document.createElement('th');
+        let name = document.createTextNode("ID");
+        th.append(name);
+        tr.append(th);
+
+        th = document.createElement('th');
+        name = document.createTextNode("Name");
+        th.append(name);
+        tr.append(th);
+
+        th = document.createElement('th');
+        name = document.createTextNode("Class");
+        th.append(name);
+        tr.append(th);
+
+        th = document.createElement('th');
+        name = document.createTextNode("Village");
+        th.append(name);
+        tr.append(th);
+
+
+        th = document.createElement('th')
+        name = document.createTextNode('Action');
+        th.append(name);
+        tr.append(th);
+
+        th = document.createElement('th')
+        name = document.createTextNode('Action');
+        th.append(name);
+        tr.append(th);
+        table.append(tr);
+
+        students.forEach((ele, index) => {
+          tr = document.createElement('tr');
+          let td = document.createElement('td');
+          name = document.createTextNode(ele.id);
+          td.append(name);
+          tr.append(td);
+
+          td = document.createElement('td');
+          name = document.createTextNode(ele.name);
+          td.append(name);
+          tr.append(td);
+
+          td = document.createElement('td');
+          name = document.createTextNode(ele.class);
+          td.append(name);
+          tr.append(td);
+
+          td = document.createElement('td');
+          name = document.createTextNode(ele.village);
+          td.append(name);
+          tr.append(td);
+
+          // create Edit Button..........
+
+          td = document.createElement('td');
+          let button = document.createElement('button');
+          name = document.createTextNode('Edit');
+          button.addEventListener('click', () => {
+            console.log(students[index]);
+            document.getElementById('id').value = students[index].id;
+            document.getElementById('name').value = students[index].name;
+            document.getElementById('class').value = students[index].class;
+            document.getElementById('village').value = students[index].village;
+            isEdit = true;
+            const buttonName = document.getElementById('submit-id');
+            buttonName.innerText = 'Update';
+            indexOfTable = index;
+          });
+          button.append(name);
+          td.append(button);
+
+          tr.append(button);
+
+
+          // create Delete Button....................................
+          td = document.createElement('td');
+          button = document.createElement('button');
+          name = document.createTextNode('Delete');
+          button.addEventListener('click', () => {
+            document.getElementById('table-id').innerHTML = '';
+
+            console.log(students[index]);
+            students.splice(index, 1);
+            newStudentsTable();
+          });
+          button.append(name);
+          td.append(button);
+          tr.append(td);
+          table.append(tr);
+        });
+
+        document.body.append(table);
+      }
+      // Form Coding...........................................................
+      let form = document.createElement('form');
+
+      let h2 = document.createElement('h2');
+      h2.style = "text-align: center;";
+      let name = document.createTextNode('Add users');
+      h2.append(name);
+      // h2.innerText = "Add Users";
+      form.append(h2);
+
+      let table = document.createElement('table');
+
+      table.align = "center";
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      let label = document.createElement('label');
+      label.setAttribute('for', 'id')
+      name = document.createTextNode('ID');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      let input = document.createElement('input');
+      input.type = 'number';
+      input.id = 'id';
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute('for', 'name')
+      name = document.createTextNode('Name');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.type = 'text';
+      input.id = 'name';
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute('for', 'class')
+      name = document.createTextNode('Class');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.type = 'text';
+      input.id = 'class';
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      label = document.createElement('label');
+      label.setAttribute('for', 'village')
+      name = document.createTextNode('Village');
+      label.append(name);
+      td.append(label);
+      tr.append(td);
+
+      td = document.createElement('td');
+      input = document.createElement('input');
+      input.type = 'text';
+      input.id = 'village';
+      td.append(input);
+      tr.append(td);
+      table.append(tr);
+
+      tr = document.createElement('tr');
+      td = document.createElement('td');
+      let button = document.createElement('button');
+      button.type = "button";
+      button.id = "submit-id";
+      name = document.createTextNode('Submit');
+      button.addEventListener('click', () => {
+        document.getElementById('table-id').innerHTML = '';
+
+        const studObj = {
+          id: document.getElementById('id').value,
+          name: document.getElementById('name').value,
+          class: document.getElementById('class').value,
+          village: document.getElementById('village').value,
+        };
+        if (isEdit === true) {
+          console.log(indexOfTable);
+          students[indexOfTable] = studObj;
+          isEdit = false;
+          indexOfTable = -1;
+          const buttonName = document.getElementById('submit-id');
+          buttonName.innerText = 'Submit';
+        }
+        else {
+          students.push(studObj);
+        }
+        newStudentsTable();
+      });
+
+      button.append(name);
+      td.append(button);
+      tr.append(td);
+
+
+      td = document.createElement('td');
+      button = document.createElement('button');
+      button.id = "reset-id";
+      button.type = 'reset';
+      name = document.createTextNode('Reset');
+      button.addEventListener('click', () => {
+        const buttonName = document.getElementById('submit-id');
+        buttonName.innerText = 'Submit';
+        indexOfTable = -1;
+        isEdit = false;
+      });
+      button.append(name);
+      td.append(button);
+      tr.append(td);
+      table.append(tr);
+
+
+      form.append(table);
+      document.body.append(form);
+    });
+  </script>
+</head>
+
+</html>
