@@ -25,6 +25,8 @@
         },
       ];
       let body = document.createElement('body');
+      let div = document.createElement('div');
+      div.id = 'main_div';
       isEdit = false;
       indexOfTable = -1;
       newStudentsTable();
@@ -115,7 +117,7 @@
           button = document.createElement('button');
           name = document.createTextNode('Delete');
           button.addEventListener('click', () => {
-            document.getElementById('table-id').innerHTML = '';
+            document.getElementById('main_div').innerHTML = '';
 
             console.log(students[index]);
             students.splice(index, 1);
@@ -126,8 +128,8 @@
           tr.append(td);
           table.append(tr);
         });
-
-        document.body.append(table);
+        div.append(table);
+        document.body.append(div);
       }
       // Form Coding...........................................................
       let form = document.createElement('form');
@@ -219,7 +221,7 @@
       button.id = "submit-id";
       name = document.createTextNode('Submit');
       button.addEventListener('click', () => {
-        document.getElementById('table-id').innerHTML = '';
+        document.getElementById('main_div').innerHTML = '';
 
         const studObj = {
           id: document.getElementById('id').value,
