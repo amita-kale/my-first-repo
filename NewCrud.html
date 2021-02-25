@@ -27,6 +27,13 @@
       let body = document.createElement('body');
       let div = document.createElement('div');
       div.id = 'main_div';
+
+      let h1 = document.createElement('h1');
+      h1.style = "text-align:center;";
+      let name = document.createTextNode("Users Table");
+
+      h1.append(name);
+      div.append(h1);
       isEdit = false;
       indexOfTable = -1;
       newStudentsTable();
@@ -41,54 +48,83 @@
         th.append(name);
         tr.append(th);
 
-        th = document.createElement('th');
-        name = document.createTextNode("Name");
-        th.append(name);
-        tr.append(th);
-
-        th = document.createElement('th');
-        name = document.createTextNode("Class");
-        th.append(name);
-        tr.append(th);
-
-        th = document.createElement('th');
-        name = document.createTextNode("Village");
-        th.append(name);
-        tr.append(th);
+        const appendData = (fieldName) => {
+          th = document.createElement('th');
+          name = document.createTextNode(fieldName);
+          th.append(name);
+          tr.append(th);
+        }
+        appendData("Name");
+        appendData("Class");
+        appendData("Village");
+        appendData('Action');
+        appendData('Action');
 
 
-        th = document.createElement('th')
-        name = document.createTextNode('Action');
-        th.append(name);
-        tr.append(th);
 
-        th = document.createElement('th')
-        name = document.createTextNode('Action');
-        th.append(name);
-        tr.append(th);
+        // th = document.createElement('th');
+        // name = document.createTextNode("Name");
+        // th.append(name);
+        // tr.append(th);
+
+
+        // th = document.createElement('th');
+        // name = document.createTextNode("Class");
+        // th.append(name);
+        // tr.append(th);
+        // appendData("Class");
+
+        // th = document.createElement('th');
+        // name = document.createTextNode("Village");
+        // th.append(name);
+        // tr.append(th);
+        // appendData("Village");
+
+
+        // th = document.createElement('th')
+        // name = document.createTextNode('Action');
+        // th.append(name);
+        // tr.append(th);
+        //appendData('Action');
+
+        // th = document.createElement('th')
+        // name = document.createTextNode('Action');
+        // th.append(name);
+        // tr.append(th);
+        // appendData('Action');
+
         table.append(tr);
 
         students.forEach((ele, index) => {
           tr = document.createElement('tr');
-          let td = document.createElement('td');
-          name = document.createTextNode(ele.id);
-          td.append(name);
-          tr.append(td);
 
-          td = document.createElement('td');
-          name = document.createTextNode(ele.name);
-          td.append(name);
-          tr.append(td);
 
-          td = document.createElement('td');
-          name = document.createTextNode(ele.class);
-          td.append(name);
-          tr.append(td);
+          function addData(fielddata) {
+            let td = document.createElement('td');
+            name = document.createTextNode(fielddata);
+            td.append(name);
+            tr.append(td);
+          }
 
-          td = document.createElement('td');
-          name = document.createTextNode(ele.village);
-          td.append(name);
-          tr.append(td);
+          addData(ele.id);
+          addData(ele.name);
+          addData(ele.class);
+          addData(ele.village);
+
+          // td = document.createElement('td');
+          // name = document.createTextNode(ele.name);
+          // td.append(name);
+          // tr.append(td);
+
+          // td = document.createElement('td');
+          // name = document.createTextNode(ele.class);
+          // td.append(name);
+          // tr.append(td);
+
+          // td = document.createElement('td');
+          // name = document.createTextNode(ele.village);
+          // td.append(name);
+          // tr.append(td);
 
           // create Edit Button..........
 
@@ -109,7 +145,7 @@
           button.append(name);
           td.append(button);
 
-          tr.append(button);
+          tr.append(td);
 
 
           // create Delete Button....................................
@@ -136,83 +172,107 @@
 
       let h2 = document.createElement('h2');
       h2.style = "text-align: center;";
-      let name = document.createTextNode('Add users');
+      name = document.createTextNode('Add users');
       h2.append(name);
       // h2.innerText = "Add Users";
       form.append(h2);
 
       let table = document.createElement('table');
-
       table.align = "center";
-      tr = document.createElement('tr');
-      td = document.createElement('td');
-      let label = document.createElement('label');
-      label.setAttribute('for', 'id')
-      name = document.createTextNode('ID');
-      label.append(name);
-      td.append(label);
-      tr.append(td);
 
-      td = document.createElement('td');
-      let input = document.createElement('input');
-      input.type = 'number';
-      input.id = 'id';
-      td.append(input);
-      tr.append(td);
-      table.append(tr);
+      function addFormData(formlabel, id, type) {
+        tr = document.createElement('tr');
+        td = document.createElement('td');
+        let label = document.createElement('label');
+        label.setAttribute('for', id)
+        name = document.createTextNode(formlabel);
+        label.append(name);
+        td.append(label);
+        tr.append(td);
 
-
-      tr = document.createElement('tr');
-      td = document.createElement('td');
-      label = document.createElement('label');
-      label.setAttribute('for', 'name')
-      name = document.createTextNode('Name');
-      label.append(name);
-      td.append(label);
-      tr.append(td);
-
-      td = document.createElement('td');
-      input = document.createElement('input');
-      input.type = 'text';
-      input.id = 'name';
-      td.append(input);
-      tr.append(td);
-      table.append(tr);
+        td = document.createElement('td');
+        let input = document.createElement('input');
+        input.type = type;
+        input.id = id;
+        td.append(input);
+        tr.append(td);
+        table.append(tr);
+      }
+      addFormData("ID", 'id', 'number');
+      addFormData("Name", 'name', 'text');
+      addFormData("Class", 'class', 'text');
+      addFormData("Village", 'village', 'text');
 
 
-      tr = document.createElement('tr');
-      td = document.createElement('td');
-      label = document.createElement('label');
-      label.setAttribute('for', 'class')
-      name = document.createTextNode('Class');
-      label.append(name);
-      td.append(label);
-      tr.append(td);
+      // tr = document.createElement('tr');
+      // td = document.createElement('td');
+      // let label = document.createElement('label');
+      // label.setAttribute('for', 'id')
+      // name = document.createTextNode('ID');
+      // label.append(name);
+      // td.append(label);
+      // tr.append(td);
 
-      td = document.createElement('td');
-      input = document.createElement('input');
-      input.type = 'text';
-      input.id = 'class';
-      td.append(input);
-      tr.append(td);
-      table.append(tr);
+      // td = document.createElement('td');
+      // let input = document.createElement('input');
+      // input.type = 'number';
+      // input.id = 'id';
+      // td.append(input);
+      // tr.append(td);
+      // table.append(tr);
 
-      tr = document.createElement('tr');
-      td = document.createElement('td');
-      label = document.createElement('label');
-      label.setAttribute('for', 'village')
-      name = document.createTextNode('Village');
-      label.append(name);
-      td.append(label);
-      tr.append(td);
 
-      td = document.createElement('td');
-      input = document.createElement('input');
-      input.type = 'text';
-      input.id = 'village';
-      td.append(input);
-      tr.append(td);
-      table.append(tr);
+      // tr = document.createElement('tr');
+      // td = document.createElement('td');
+      // label = document.createElement('label');
+      // label.setAttribute('for', 'name')
+      // name = document.createTextNode('Name');
+      // label.append(name);
+      // td.append(label);
+      // tr.append(td);
+
+      // td = document.createElement('td');
+      // input = document.createElement('input');
+      // input.type = 'text';
+      // input.id = 'name';
+      // td.append(input);
+      // tr.append(td);
+      // table.append(tr);
+
+
+      // tr = document.createElement('tr');
+      // td = document.createElement('td');
+      // label = document.createElement('label');
+      // label.setAttribute('for', 'class')
+      // name = document.createTextNode('Class');
+      // label.append(name);
+      // td.append(label);
+      // tr.append(td);
+
+      // td = document.createElement('td');
+      // input = document.createElement('input');
+      // input.type = 'text';
+      // input.id = 'class';
+      // td.append(input);
+      // tr.append(td);
+      // table.append(tr);
+
+      // tr = document.createElement('tr');
+      // td = document.createElement('td');
+      // label = document.createElement('label');
+      // label.setAttribute('for', 'village')
+      // name = document.createTextNode('Village');
+      // label.append(name);
+      // td.append(label);
+      // tr.append(td);
+
+      // td = document.createElement('td');
+      // input = document.createElement('input');
+      // input.type = 'text';
+      // input.id = 'village';
+      // td.append(input);
+      // tr.append(td);
+      // table.append(tr);
 
       tr = document.createElement('tr');
       td = document.createElement('td');
@@ -238,9 +298,22 @@
           buttonName.innerText = 'Submit';
         }
         else {
-          students.push(studObj);
+          let message = "please fill";
+          if (studObj) {
+            message += studObj.id ? "" : 'ID ';
+            message += studObj.name ? "" : 'Name ';
+            message += studObj.class ? "" : 'Class ';
+            message += studObj.village ? "" : 'Village ';
+            alert(message)
+          } else {
+            students.push(studObj);
+          }
         }
         newStudentsTable();
+        document.getElementById('id').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('class').value = '';
+        document.getElementById('village').value = '';
       });
 
       button.append(name);
